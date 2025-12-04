@@ -1,6 +1,6 @@
 # Zoom Error 1132 Fix
 
-> ⚠️ **PRERELEASE** — This tool is in early testing. We need feedback from **macOS** and **Windows** users! Please [report any issues](../../issues) you encounter.
+> ⚠️ **PRERELEASE** — This tool is in early testing. We need feedback from **macOS** and **Windows** users! Please contact **Telegram: @lowkeylbc** with any issues, screenshots, or device info.
 
 A cross-platform tool that fixes **Zoom Error 1132** and other connection issues by completely resetting and reinstalling Zoom.
 
@@ -189,11 +189,11 @@ This is a **prerelease**. The script has been developed but needs real-world tes
 - 🧪 **macOS** — Needs testing!
 - 🧪 **Windows** — Needs testing!
 
-If you try this tool, please [open an issue](../../issues) to let us know:
+If you try this tool, please contact **Telegram: @lowkeylbc** to let us know:
 - Your operating system and version
 - Whether it worked or not
 - Any error messages you encountered
 
 ---
 
-**Having issues?** [Open an issue](../../issues) and include your operating system and any error messages you see.
+**Having issues?** Please contact **Telegram: @lowkeylbc** and include your operating system and any error messages you see.
