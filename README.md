@@ -1,6 +1,6 @@
-# Zoom Error 1132 Fix
+# Zoom Reset & Reinstall Tool
 
-> ⚠️ **PRERELEASE** — This tool is in early testing. We need feedback from **macOS** and **Windows** users! Please contact **Telegram: @lowkeylbc** with any issues, screenshots, or device info.
+> ⚠️ **PRERELEASE** — This tool is in early testing. We need feedback from **macOS** and **Windows** users! Please contact the Telegram group **[NUKE 1132](https://t.me/nuke1132)** with any issues, screenshots, or device info.
 
 A cross-platform tool that fixes **Zoom Error 1132** and other connection issues by completely resetting and reinstalling Zoom.
 
@@ -35,13 +35,13 @@ This tool performs a **complete** reset:
 
 ### Windows
 
-1. [Download this repository](../../archive/refs/heads/main.zip) and extract it
+1. Download this repository and extract it
 2. Double-click **`zoom-reset.bat`**
 3. Follow the prompts (click "Yes" if asked for admin permission)
 
 ### macOS
 
-1. [Download this repository](../../archive/refs/heads/main.zip) and extract it
+1. Download this repository and extract it
 2. Open Terminal in the extracted folder
 3. Run:
    ```bash
@@ -51,7 +51,7 @@ This tool performs a **complete** reset:
 
 ### Linux
 
-1. [Download this repository](../../archive/refs/heads/main.zip) and extract it
+1. Download this repository and extract it
 2. Open Terminal in the extracted folder
 3. Run:
    ```bash
@@ -81,6 +81,17 @@ You'll be prompted to:
 3. Optionally grant admin/sudo privileges
 
 Then switch to that user account and run Zoom from there.
+
+---
+
+## What This Tool Does
+
+1. ✓ Stops Zoom if it's running
+2. ✓ Removes all Zoom application files
+3. ✓ Removes all Zoom user data and settings
+4. ✓ Downloads the latest Zoom installer
+5. ✓ Installs Zoom fresh
+6. ✓ Launches Zoom
 
 ---
 
@@ -119,9 +130,9 @@ Yes. After the reset, Zoom will be like a brand new installation. You'll need to
 
 Yes. The script only touches Zoom-related files. It's open source — you can review every line of code before running it.
 
-**What if Separate User Mode doesn't work either?**
+**What if -SeparateUser doesn't work?**
 
-Contact [Zoom Support](https://support.zoom.us/). Error 1132 is a known bug on their end.
+Contact Zoom Support: https://support.zoom.us/ — Error 1132 is a known bug on their end.
 
 **Do I need to install anything first?**
 
@@ -156,11 +167,14 @@ This is a **prerelease**. The script has been developed but needs real-world tes
 - 🧪 **macOS** — Needs testing!
 - 🧪 **Windows** — Needs testing!
 
-If you try this tool, please contact **Telegram: @lowkeylbc** to let us know:
+If you try this tool, please contact **[NUKE 1132](https://t.me/nuke1132)** on Telegram and include:
 - Your operating system and version
-- Whether it worked or not
-- Any error messages you encountered
+- Whether you used `-SeparateUser` mode
+- Whether the reset worked or not
+- Any error messages or screenshots
+
+Please do **not** open GitHub issues — direct your feedback to **[NUKE 1132](https://t.me/nuke1132)** on Telegram.
 
 ---
 
-**Having issues?** Please contact **Telegram: @lowkeylbc** and include your operating system and any error messages you see.
+If you're comfortable with GitHub issues and still want to post there, note that we prefer Telegram feedback during this prerelease phase.
