@@ -112,7 +112,7 @@ if ($IsLinux) {
         Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Green
         Write-Host ""
         Write-Host "Launching Zoom..." -ForegroundColor Cyan
-        zoom
+        bash -c "nohup zoom >/dev/null 2>&1 &"
     }
 
 }

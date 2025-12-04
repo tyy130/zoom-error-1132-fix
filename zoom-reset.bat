@@ -18,36 +18,37 @@ REM Check if pwsh is available
 where pwsh >nul 2>nul
 if %ERRORLEVEL% EQU 0 (
     pwsh "%MAIN_SCRIPT%" %*
-    exit /b %ERRORLEVEL%
+    REM If successful, close automatically (Zoom is launching)
+    if !ERRORLEVEL! EQU 0 (
+        exit /b 0
+    )
+    echo.
+    pause
+    exit /b !ERRORLEVEL!
 )
 
-REM PowerShell not found - try to install it
-echo Installing required component (PowerShell)...
+REM PowerShell not found
+echo PowerShell is required but not installed.
 echo.
 
 REM Check if winget is available
 where winget >nul 2>nul
 if %ERRORLEVEL% EQU 0 (
-    echo Installing via Windows Package Manager...
-    winget install Microsoft.PowerShell --accept-source-agreements --accept-package-agreements
-    
+    echo To install, run:
+    echo   winget install Microsoft.PowerShell
     echo.
-    echo Installation complete! Please close this window and run zoom-reset.bat again.
-    pause
-    exit /b 0
+    set /p INSTALL="Install now? (y/N): "
+    if /i "!INSTALL!"=="y" (
+        winget install Microsoft.PowerShell --accept-source-agreements --accept-package-agreements
+        echo.
+        echo If installation succeeded, please close this window and run zoom-reset.bat again.
+    )
+) else (
+    echo Please install PowerShell from:
+    echo   - Microsoft Store: Search for "PowerShell"
+    echo   - Or download from: https://aka.ms/powershell
 )
 
-REM No winget - give manual instructions
-echo.
-echo Automatic installation not available.
-echo.
-echo Please install PowerShell from the Microsoft Store:
-echo   1. Open Microsoft Store
-echo   2. Search for "PowerShell"
-echo   3. Click Install
-echo   4. Run this script again
-echo.
-echo Or download from: https://aka.ms/powershell
 echo.
 pause
 exit /b 1
