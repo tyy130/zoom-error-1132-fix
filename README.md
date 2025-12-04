@@ -1,83 +1,166 @@
-# Zoom Reset & Reinstall Tool
+# Zoom Error 1132 Fix
 
-**Fixes Zoom Error 1132** and other connection issues with a complete reset and fresh install.
+> ⚠️ **PRERELEASE** — This tool is in early testing. We need feedback from **macOS** and **Windows** users! Please [report any issues](../../issues) you encounter.
 
-## What is Error 1132?
+A cross-platform tool that fixes **Zoom Error 1132** and other connection issues by completely resetting and reinstalling Zoom.
 
-Error 1132 is a widespread Zoom bug that displays "Your connection is unstable" or prevents you from joining meetings. **This is not a network problem** — it's a Zoom bug that corrupts your user profile data. A normal reinstall often doesn't fix it because the corrupted data remains.
+Works on **Windows**, **macOS**, and **Linux**.
 
-This tool completely removes Zoom and all its data, then installs a fresh copy.
+---
+
+## The Problem
+
+**Error 1132** is a widespread Zoom bug that prevents you from joining meetings. You might see:
+
+- "Your connection is unstable"
+- "Error code: 1132"
+- Meetings won't connect even though your internet is fine
+
+**This is NOT a network problem.** It's a Zoom bug that corrupts your local user profile data. A normal reinstall doesn't fix it because the corrupted data stays behind.
+
+## The Solution
+
+This tool performs a **complete** reset:
+
+1. Kills any running Zoom processes
+2. Uninstalls Zoom completely
+3. Deletes ALL Zoom data (cache, settings, profiles)
+4. Downloads the latest Zoom installer
+5. Installs fresh
+6. Launches Zoom
+
+---
 
 ## Quick Start
 
 ### Windows
-1. Download this folder
-2. Double-click **`zoom-reset.bat`**
-3. Follow the prompts
 
-### Mac
-1. Download this folder
-2. Open Terminal in this folder
-3. Run: `./zoom-reset.sh`
-4. Follow the prompts
+1. [Download this repository](../../archive/refs/heads/main.zip) and extract it
+2. Double-click **`zoom-reset.bat`**
+3. Follow the prompts (click "Yes" if asked for admin permission)
+
+### macOS
+
+1. [Download this repository](../../archive/refs/heads/main.zip) and extract it
+2. Open Terminal in the extracted folder
+3. Run:
+   ```bash
+   ./zoom-reset.sh
+   ```
+4. Enter your password when prompted
 
 ### Linux
-1. Download this folder
-2. Open Terminal in this folder
-3. Run: `./zoom-reset.sh`
-4. Follow the prompts
+
+1. [Download this repository](../../archive/refs/heads/main.zip) and extract it
+2. Open Terminal in the extracted folder
+3. Run:
+   ```bash
+   ./zoom-reset.sh
+   ```
+4. Enter your password when prompted
+
+---
 
 ## Still Getting Error 1132?
 
-If a normal reset doesn't fix it, try **Separate User Mode**. This creates a fresh user account on your computer with a completely clean Zoom profile.
+If the standard reset doesn't work, the corruption may be deeper in your user profile. Try **Separate User Mode**, which creates a fresh Windows/macOS/Linux user account with a completely clean Zoom installation.
 
 ### Windows
-```
+```cmd
 zoom-reset.bat -SeparateUser
 ```
 
-### Mac / Linux
-```
+### macOS / Linux
+```bash
 ./zoom-reset.sh -SeparateUser
 ```
 
 You'll be prompted to:
 1. Enter a username for the new account
 2. Set a password
-3. (Optional) Give the account admin privileges
+3. Optionally grant admin/sudo privileges
 
-Then log into that account and use Zoom from there.
+Then switch to that user account and run Zoom from there.
 
-## What This Tool Does
-
-1. ✓ Stops Zoom if it's running
-2. ✓ Removes all Zoom application files
-3. ✓ Removes all Zoom user data and settings
-4. ✓ Downloads the latest Zoom installer
-5. ✓ Installs Zoom fresh
-6. ✓ Launches Zoom
+---
 
 ## Requirements
 
-- Internet connection (to download Zoom)
-- Administrator/sudo access (to uninstall and install)
+- **Internet connection** — to download the latest Zoom installer
+- **Admin/sudo access** — to uninstall and install applications
 
-The script will automatically install PowerShell if needed — just follow the prompts.
+> **Note:** The wrapper scripts (`zoom-reset.bat` and `zoom-reset.sh`) will offer to install PowerShell Core if it's not already installed.
+
+---
+
+## How It Works
+
+| Step | Windows | macOS | Linux |
+|------|---------|-------|-------|
+| Kill Zoom | `Stop-Process -Name Zoom*` | `pkill -x "zoom.us"` | `pkill zoom` |
+| Uninstall | WMI + folder removal | Delete `.app` bundle | `apt remove --purge` |
+| Clean data | `AppData\Roaming\Zoom`, `AppData\Local\Zoom` | `~/Library/Application Support/zoom.us` | `~/.zoom`, `~/.config/zoom` |
+| Download | `ZoomInstallerFull.exe` | `Zoom.pkg` | `zoom_amd64.deb` |
+| Install | Silent installer | `installer -pkg` | `apt install` |
+
+---
 
 ## FAQ
 
-**Q: Will this delete my Zoom account?**  
-A: No. This only resets the Zoom app on your computer. Your Zoom account, meetings, and cloud recordings are safe.
+**Will this delete my Zoom account?**
 
-**Q: Will I need to sign in again?**  
-A: Yes. After the reset, Zoom will be like a fresh install and you'll need to sign in.
+No. This only affects the Zoom app on your computer. Your Zoom account, meetings, recordings, and contacts are stored on Zoom's servers and remain safe.
 
-**Q: What if -SeparateUser doesn't work?**  
-A: Contact Zoom support. This is a known bug they're working on fixing.
+**Will I need to sign in again?**
 
-**Q: Is this safe?**  
-A: Yes. The script only touches Zoom files and (optionally) creates a new user account. You can review the code — it's open source.
+Yes. After the reset, Zoom will be like a brand new installation. You'll need to sign in with your Zoom account.
+
+**Is this safe to run?**
+
+Yes. The script only touches Zoom-related files. It's open source — you can review every line of code before running it.
+
+**What if Separate User Mode doesn't work either?**
+
+Contact [Zoom Support](https://support.zoom.us/). Error 1132 is a known bug on their end.
+
+**Do I need to install anything first?**
+
+The wrapper scripts will install PowerShell Core automatically if needed. Just run `zoom-reset.bat` (Windows) or `zoom-reset.sh` (macOS/Linux).
+
+---
+
+## Project Structure
+
+```
+zoom-error-1132-fix/
+├── zoom-reset.bat              # Windows launcher
+├── zoom-reset.sh               # macOS/Linux launcher
+├── zoom-reset-and-reinstall.ps1  # Main cross-platform script
+└── README.md
+```
+
+---
 
 ## License
 
-MIT — Use freely, no warranty.
+MIT License — free to use, modify, and distribute.
+
+---
+
+## Help Us Test! 🧪
+
+This is a **prerelease**. The script has been developed but needs real-world testing on different systems.
+
+**We especially need feedback from:**
+- ✅ Linux — Initial testing complete
+- 🧪 **macOS** — Needs testing!
+- 🧪 **Windows** — Needs testing!
+
+If you try this tool, please [open an issue](../../issues) to let us know:
+- Your operating system and version
+- Whether it worked or not
+- Any error messages you encountered
+
+---
+
+**Having issues?** [Open an issue](../../issues) and include your operating system and any error messages you see.
