@@ -82,7 +82,40 @@ You'll be prompted to:
 
 Then switch to that user account and run Zoom from there.
 
+<<<<<<< HEAD
 ---
+=======
+# Zoom Reset & Reinstall Tool
+
+> ⚠️ **PRERELEASE** — This tool is in early testing. We need feedback from **macOS** and **Windows** users! Please contact the Telegram account **@lowkeylbc** with any issues, screenshots, or device info.
+
+**Fixes Zoom Error 1132** and other connection issues with a complete reset and fresh install.
+
+## What This Tool Does
+
+**Fixes Zoom Error 1132** and other connection issues with a complete reset and fresh install.
+
+## What This Tool Does
+  
+**Help Us Test!** 🧪
+
+This is a **prerelease**. The script needs real-world testing on different systems.
+
+If you try this tool, please contact Telegram: **@lowkeylbc** and include:
+- Your operating system and version (e.g., Windows 11, macOS 12.6, Ubuntu 22.04)
+- Whether you used `-SeparateUser` mode
+- Whether the reset worked or not
+- Any error messages or screenshots
+
+Please do **not** open GitHub issues — direct your feedback to **@lowkeylbc** on Telegram.
+
+1. ✓ Stops Zoom if it's running
+2. ✓ Removes all Zoom application files
+3. ✓ Removes all Zoom user data and settings
+4. ✓ Downloads the latest Zoom installer
+5. ✓ Installs Zoom fresh
+6. ✓ Launches Zoom
+>>>>>>> 1a9f2c0 (docs(readme): add PRERELEASE banner & Telegram contact @lowkeylbc for feedback)
 
 ## Requirements
 
